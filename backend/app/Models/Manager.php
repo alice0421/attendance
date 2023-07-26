@@ -8,7 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
-class Mentor extends Authenticatable
+class Manager extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
@@ -20,10 +20,6 @@ class Mentor extends Authenticatable
     protected $fillable = [
         'code',
         'name',
-        'is_admin',
-        'is_remote',
-        'work_day',
-        'state',
         'email',
         'password',
     ];
@@ -47,18 +43,8 @@ class Mentor extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function events()
+    public function applications()
     {
-        return $this->belongsToMany(Event::class);
-    }
-
-    public function records()
-    {
-        return $this->hasMany(Record::class);
-    }
-
-    public function shifts()
-    {
-        return $this->hasMany(Shift::class);
+        return $this->hasMany(Application::class);
     }
 }

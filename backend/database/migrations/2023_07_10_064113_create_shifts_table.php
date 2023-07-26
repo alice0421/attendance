@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('shifts', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained('users')->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreignId('mentor_id')->constrained('mentors')->cascadeOnUpdate()->cascadeOnDelete();
             $table->integer('work_type'); //enum: 0 = 校舎, 1 = リモート, 2 = ハッカソン
             $table->date('date');
             $table->time('start_time');

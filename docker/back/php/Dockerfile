@@ -16,4 +16,5 @@ RUN apt-get update \
     unzip \
     vim \
     libpng-dev \
-    && docker-php-ext-install pdo_mysql bcmath
+    libicu-dev \
+    && docker-php-ext-install pdo_mysql bcmath intl

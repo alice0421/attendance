@@ -7,7 +7,7 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
-class UserSeeder extends Seeder
+class MentorSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -17,7 +17,7 @@ class UserSeeder extends Seeder
     public function run()
     {
         // メンター
-        DB::table('users')->insert([
+        DB::table('mentors')->insert([
             'code' => 'm'. (string) str_pad(random_int(0, 999999), 6,0, STR_PAD_LEFT),
             'name' => 'remote mentor',
             'is_admin' => false,
@@ -30,7 +30,7 @@ class UserSeeder extends Seeder
             'updated_at' => now(),
         ]);
 
-        DB::table('users')->insert([
+        DB::table('mentors')->insert([
             'code' => 'm'. (string) str_pad(random_int(0, 999999), 6,0, STR_PAD_LEFT),
             'name' => 'office mentor',
             'is_admin' => false,
@@ -43,7 +43,7 @@ class UserSeeder extends Seeder
             'updated_at' => now(),
         ]);
 
-        DB::table('users')->insert([
+        DB::table('mentors')->insert([
             'code' => 'm'. (string) str_pad(random_int(0, 999999), 6,0, STR_PAD_LEFT),
             'name' => 'admin mentor',
             'is_admin' => true,
@@ -52,20 +52,6 @@ class UserSeeder extends Seeder
             'state' => 0,
             'email' => 'admin.mentor@gmail.com',
             'password' => Hash::make('admin.mentor'),
-            'created_at' => now(),
-            'updated_at' => now(),
-        ]);
-
-        // 運営
-        DB::table('users')->insert([
-            'code' => 's'. (string) str_pad(random_int(0, 999999), 6,0, STR_PAD_LEFT),
-            'name' => 'sample staff',
-            'is_admin' => true,
-            'is_remote' => false,
-            'work_day' => 0,
-            'state' => 0,
-            'email' => 'sample.staff@gmail.com',
-            'password' => Hash::make('sample.staff'),
             'created_at' => now(),
             'updated_at' => now(),
         ]);

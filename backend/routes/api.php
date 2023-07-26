@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\MentorController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -22,4 +23,9 @@ Route::get('/hello', function () {
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
+});
+
+// 認証制限なし
+Route::controller(MentorController::class)->group(function () {
+    Route::post('/mentors/register', 'register')->name('mentors.register');
 });

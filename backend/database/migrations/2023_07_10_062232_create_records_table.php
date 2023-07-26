@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('records', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained('users')->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreignId('mentor_id')->constrained('mentors')->cascadeOnUpdate()->cascadeOnDelete();
             $table->integer('record_type'); // enum: 0 = 出勤 (WORK_IN), 1 = 退勤 (WORK_OUT), 2 = 休憩開始 (BREAK_IN), 3 = 休憩終了 (BREAK_OUT)
             $table->boolean('is_remote');
             $table->date('date');

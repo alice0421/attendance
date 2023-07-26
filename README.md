@@ -47,3 +47,8 @@
 1. `$ docker-compose exec frontend bash`でappコンテナ (Laravelコンテナ) に入る。
 2. `$ composer create-project --prefer-dist laravel/laravel . "9.*"`でカレントディレクトリ (`/var/www/html（ = ./backend）`) 直下にLaravel9アプリファイル群を作成する。
 3. `$ php artisan key:generate`でLaravelのアプリキーを作成する。
+4. `.env`ファイルに以下を追記。
+    ```bash
+    SANCTUM_STATEFUL_DOMAINS=localhost:3000 # Laravel Sanctumへのアクセスを許可するドメインを指定
+    SESSION_DOMAIN=localhost # セッション・クッキーを許可する (フロントの) ドメインを指定 (クロスドメイン (backとfrontのドメインが違う) のため)
+    ```

@@ -29,6 +29,7 @@ return [
 
     'max_age' => 0,
 
-    'supports_credentials' => false,
+    // クロスオリジン (backとfrontのアドレスが違う) のためCORSを有効化
+    'supports_credentials' => true,
 
 ];

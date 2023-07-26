@@ -13,6 +13,11 @@
     DB_ROOT_PASSWORD=root_password
     ```
 2. `$ make init`
+3. `backend/.env`に以下を追記。
+    ```bash
+    SANCTUM_STATEFUL_DOMAINS=localhost:3000 # Laravel Sanctumへのアクセスを許可するドメインを指定
+    SESSION_DOMAIN=localhost # セッション・クッキーを許可する (フロントの) ドメインを指定 (クロスドメイン (backとfrontのドメインが違う) のため)
+    ```
 
 ## 一から構築する場合
 ### frontend (Nuxt3)
@@ -47,8 +52,10 @@
 1. `$ docker-compose exec frontend bash`でappコンテナ (Laravelコンテナ) に入る。
 2. `$ composer create-project --prefer-dist laravel/laravel . "9.*"`でカレントディレクトリ (`/var/www/html（ = ./backend）`) 直下にLaravel9アプリファイル群を作成する。
 3. `$ php artisan key:generate`でLaravelのアプリキーを作成する。
-4. `.env`ファイルに以下を追記。
-    ```bash
-    SANCTUM_STATEFUL_DOMAINS=localhost:3000 # Laravel Sanctumへのアクセスを許可するドメインを指定
-    SESSION_DOMAIN=localhost # セッション・クッキーを許可する (フロントの) ドメインを指定 (クロスドメイン (backとfrontのドメインが違う) のため)
-    ```
+
+# 開発Tips
+## back
+- PostmanでのAPI挙動テスト時、`app/Http/Kernel.php`の`'throttle:api'`はコメントアウトすること。
+  - 外さないと、同ドメインからの1分あたりのリクエスト回数が制限される。
+
+## front

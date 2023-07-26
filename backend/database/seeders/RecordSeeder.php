@@ -17,7 +17,7 @@ class RecordSeeder extends Seeder
     {
         // 出勤
         DB::table('records')->insert([
-            'user_id' => 1,
+            'mentor_id' => 1,
             'record_type' => 0,
             'is_remote' => true,
             'date' => '2023-07-21',
@@ -27,7 +27,7 @@ class RecordSeeder extends Seeder
 
         // 休憩開始
         DB::table('records')->insert([
-            'user_id' => 1,
+            'mentor_id' => 1,
             'record_type' => 1,
             'is_remote' => true,
             'date' => '2023-07-21',
@@ -37,7 +37,7 @@ class RecordSeeder extends Seeder
 
         // 休憩終了
         DB::table('records')->insert([
-            'user_id' => 1,
+            'mentor_id' => 1,
             'record_type' => 2,
             'is_remote' => true,
             'date' => '2023-07-21',
@@ -47,7 +47,7 @@ class RecordSeeder extends Seeder
 
         // 退勤
         DB::table('records')->insert([
-            'user_id' => 1,
+            'mentor_id' => 1,
             'record_type' => 3,
             'is_remote' => true,
             'date' => '2023-07-21',

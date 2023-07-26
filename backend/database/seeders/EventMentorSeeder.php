@@ -6,7 +6,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class EventUserSeeder extends Seeder
+class EventMentorSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,14 +15,14 @@ class EventUserSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('event_user')->insert([
+        DB::table('event_mentor')->insert([
             'event_id' => 1,
-            'user_id' => 1,
+            'mentor_id' => 1,
         ]);
 
-        DB::table('event_user')->insert([
+        DB::table('event_mentor')->insert([
             'event_id' => 1,
-            'user_id' => 2,
+            'mentor_id' => 2,
         ]);
     }
 }

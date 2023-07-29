@@ -30,7 +30,7 @@ class AuthRepository implements AuthRepositoryInterface
         $mentor = Mentor::create([
             'code' => $code,
             'name' => $mentorRegisterInputEntity->getName()->value(),
-            'is_admin' => true,
+            'is_admin' => false,
             'is_remote' => false,
             'work_day' => 0,
             'state' => 0,

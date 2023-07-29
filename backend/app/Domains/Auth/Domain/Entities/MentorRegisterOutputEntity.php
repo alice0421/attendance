@@ -6,13 +6,14 @@ namespace App\Domains\Auth\Domain\Entities;
 
 use App\Domains\Auth\Domain\ValueObjects\MentorCodeVO;
 use App\Domains\Auth\Domain\ValueObjects\MentorEmailVO;
+use App\Domains\Auth\Domain\ValueObjects\MentorIdVO;
 use App\Domains\Auth\Domain\ValueObjects\MentorNameVO;
 use App\Models\Mentor;
 
 /**
  * メンター登録の出力Entity
  */
-class RegisterMentorOutputEntity
+class MentorRegisterOutputEntity
 {
     /**
      * @var MentorCodeVO
@@ -25,6 +26,11 @@ class RegisterMentorOutputEntity
     private MentorEmailVO $email;
 
     /**
+     * @var MentorIdVO
+     */
+    private MentorIdVO $id;
+
+    /**
      * @var MentorNameVO
      */
     private MentorNameVO $name;
@@ -32,12 +38,14 @@ class RegisterMentorOutputEntity
     /**
      * @param MentorCodeVO $code
      * @param MentorEmailVO $email
+     * @param MentorIdVO $id
      * @param MentorNameVO $name
      */
-    public function __construct(MentorCodeVO $code, MentorEmailVO $email, MentorNameVO $name)
+    public function __construct(MentorCodeVO $code, MentorEmailVO $email, MentorIdVO $id, MentorNameVO $name)
     {
         $this->code = $code;
         $this->email = $email;
+        $this->id = $id;
         $this->name = $name;
     }
 
@@ -50,6 +58,7 @@ class RegisterMentorOutputEntity
         return new self(
             MentorCodeVO::create($model->code),
             MentorEmailVO::create($model->email),
+            MentorIdVO::create($model->id),
             MentorNameVO::create($model->name)
         );
     }
@@ -68,6 +77,14 @@ class RegisterMentorOutputEntity
     public function getEmail(): MentorEmailVO
     {
         return $this->email;
+    }
+
+    /**
+     * @return MentorIdVO
+     */
+    public function getId(): MentorIdVO
+    {
+        return $this->id;
     }
 
     /**

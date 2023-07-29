@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Domains\Auth\UseCase\DTOs;
 
-use App\Domains\Auth\Domain\Entities\RegisterMentorInputEntity;
+use App\Domains\Auth\Domain\Entities\MentorRegisterInputEntity;
 use App\Domains\Auth\Domain\ValueObjects\MentorEmailVO;
 use App\Domains\Auth\Domain\ValueObjects\MentorNameVO;
 use App\Domains\Auth\Domain\ValueObjects\MentorPasswordVO;
@@ -12,7 +12,7 @@ use App\Domains\Auth\Domain\ValueObjects\MentorPasswordVO;
 /**
  * メンター登録の入力
  */
-class RegisterMentorInput
+class MentorRegisterInput
 {
     /**
      * @var string
@@ -66,11 +66,11 @@ class RegisterMentorInput
     }
 
     /**
-     * @return RegisterMentorInputEntity
+     * @return MentorRegisterInputEntity
      */
-    public function toEntity(): RegisterMentorInputEntity
+    public function toEntity(): MentorRegisterInputEntity
     {
-        return new RegisterMentorInputEntity(
+        return new MentorRegisterInputEntity(
             MentorEmailVO::create($this->email),
             MentorNameVO::create($this->name),
             MentorPasswordVO::create($this->password)

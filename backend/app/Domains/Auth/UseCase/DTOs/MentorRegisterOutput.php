@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace App\Domains\Auth\UseCase\DTOs;
 
-use App\Domains\Auth\Domain\Entities\RegisterMentorOutputEntity;
+use App\Domains\Auth\Domain\Entities\MentorRegisterOutputEntity;
 
 /**
  * メンター登録の入力
  */
-class RegisterMentorOutput
+class MentorRegisterOutput
 {
     /**
      * @var string
@@ -22,6 +22,11 @@ class RegisterMentorOutput
     private string $email;
 
     /**
+     * @var int
+     */
+    private int $id;
+
+    /**
      * @var string
      */
     private string $name;
@@ -29,12 +34,14 @@ class RegisterMentorOutput
     /**
      * @param string $code
      * @param string $email
+     * @param int $id
      * @param string $name
      */
-    public function __construct(string $code, string $email, string $name)
+    public function __construct(string $code, string $email, int $id, string $name)
     {
         $this->code = $code;
         $this->email = $email;
+        $this->id = $id;
         $this->name = $name;
     }
 
@@ -42,11 +49,12 @@ class RegisterMentorOutput
      * @param Mentor $mentor
      * @return self
      */
-    public static function createFromEntity(RegisterMentorOutputEntity $entity): self
+    public static function createFromEntity(MentorRegisterOutputEntity $entity): self
     {
         return new self(
             $entity->getCode()->value(),
             $entity->getEmail()->value(),
+            $entity->getId()->value(),
             $entity->getName()->value()
         );
     }
@@ -65,6 +73,14 @@ class RegisterMentorOutput
     public function getEmail(): string
     {
         return $this->email;
+    }
+
+    /**
+     * @return int
+     */
+    public function getId(): int
+    {
+        return $this->id;
     }
 
     /**

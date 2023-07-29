@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Domains\Auth\Infrastructure\Repositories;
 
-use App\Domains\Auth\Domain\Entities\RegisterMentorInputEntity;
-use App\Domains\Auth\Domain\Entities\RegisterMentorOutputEntity;
+use App\Domains\Auth\Domain\Entities\MentorRegisterInputEntity;
+use App\Domains\Auth\Domain\Entities\MentorRegisterOutputEntity;
 use App\Domains\Auth\Domain\Repositories\AuthRepository as AuthRepositoryInterface;
 use App\Models\Mentor;
 use Illuminate\Support\Facades\Hash;
@@ -16,10 +16,10 @@ use Illuminate\Support\Facades\Hash;
 class AuthRepository implements AuthRepositoryInterface
 {
     /**
-     * @param RegisterMentorInputEntity $registerMentorInputEntity
-     * @return RegisterMentorOutputEntity
+     * @param MentorRegisterInputEntity $mentorRegisterInputEntity
+     * @return MentorRegisterOutputEntity
      */
-    public function registerMentor(RegisterMentorInputEntity $registerMentorInputEntity): RegisterMentorOutputEntity
+    public function mentorRegister(MentorRegisterInputEntity $mentorRegisterInputEntity): MentorRegisterOutputEntity
     {
         // codeを一意に定める
         while(true){
@@ -29,15 +29,15 @@ class AuthRepository implements AuthRepositoryInterface
         
         $mentor = Mentor::create([
             'code' => $code,
-            'name' => $registerMentorInputEntity->getName()->value(),
+            'name' => $mentorRegisterInputEntity->getName()->value(),
             'is_admin' => true,
             'is_remote' => false,
             'work_day' => 0,
             'state' => 0,
-            'email' => $registerMentorInputEntity->getEmail()->value(),
-            'password' => Hash::make($registerMentorInputEntity->getPassword()->value()),
+            'email' => $mentorRegisterInputEntity->getEmail()->value(),
+            'password' => Hash::make($mentorRegisterInputEntity->getPassword()->value()),
         ]);
 
-        return RegisterMentorOutputEntity::createFromModel($mentor);
+        return MentorRegisterOutputEntity::createFromModel($mentor);
     }
 }

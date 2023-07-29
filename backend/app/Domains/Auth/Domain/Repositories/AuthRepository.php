@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Domains\Auth\Domain\Repositories;
 
-use App\Domains\Auth\Domain\Entities\RegisterMentorInputEntity;
-use App\Domains\Auth\Domain\Entities\RegisterMentorOutputEntity;
+use App\Domains\Auth\Domain\Entities\MentorRegisterInputEntity;
+use App\Domains\Auth\Domain\Entities\MentorRegisterOutputEntity;
 
 /**
  * 認証系のインターフェース
@@ -13,8 +13,8 @@ use App\Domains\Auth\Domain\Entities\RegisterMentorOutputEntity;
 interface AuthRepository
 {
     /**
-     * @param RegisterMentorInputEntity $registerMentorInputEntity
-     * @return RegisterMentorOutputEntity
+     * @param MentorRegisterInputEntity $mentorRegisterInputEntity
+     * @return MentorRegisterOutputEntity
      */
-    public function registerMentor(RegisterMentorInputEntity $registerMentorInputEntity): RegisterMentorOutputEntity;
+    public function mentorRegister(MentorRegisterInputEntity $mentorRegisterInputEntity): MentorRegisterOutputEntity;
 }

@@ -11,7 +11,7 @@ use App\Domains\Auth\Domain\ValueObjects\MentorPasswordVO;
 /**
  * メンター登録の入力Entity
  */
-class RegisterMentorInputEntity
+class MentorRegisterInputEntity
 {
     /**
      * @var MentorEmailVO

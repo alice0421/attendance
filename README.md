@@ -141,7 +141,7 @@ src/app/Http/Controllers # 1アクション1コントローラー
 - Exception
     - ドメインごとのException (エラー) 処理を記述。
 
-# データの流れ
+## データの流れ
 - 現在の層よりも1つ下の層しか操作できない。
     - 例) UseCaseはRepositoryのみ扱える。直接DBは扱えないし、Controllerも使えない。
 - 現在の層の上下の繋ぎしか操作できない。
@@ -190,6 +190,39 @@ src/app/Http/Controllers # 1アクション1コントローラー
 
 [DB]
 ```
+
+- [JSON:API](https://jsonapi.org/)の形式に準拠する。
+    - [Data](https://jsonapi.org/format/#document-resource-objects:~:text=or%20is%20empty.-,Resource%20Objects,-%E2%80%9CResource%20objects%E2%80%9D%20appear)
+    ```json
+    // メンター登録APIの例
+    {
+        "data": {
+            "type": "mentors",
+            "id": 1,
+            "attributes": {
+                "code": "m000001",
+                "email": "sample.mentor@gmail.com",
+                "name": "sample mentor"
+            }
+        }
+    }
+    ```
+    - [Error](https://jsonapi.org/format/#errors:~:text=multiple%205xx%20errors.-,Error%20Objects,-Error%20objects%20provide)
+    ```json
+    // メンター登録APIの例
+    {
+        "errors": {
+            "code": 422,
+            "message": "422 Unprocessable Entity",
+            "details": {
+                "email": [
+                    "The email has already been taken."
+                ]
+            }
+        }
+    }
+    ```
+
 
 # 開発Tips
 ## back

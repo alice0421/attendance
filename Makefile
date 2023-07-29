@@ -31,3 +31,7 @@ dev:
 .PHONY: build
 build:
 	@docker-compose exec frontend npm run build
+
+.PHONY: lint
+lint:
+	@docker-compose exec app ./vendor/bin/phpstan analyse

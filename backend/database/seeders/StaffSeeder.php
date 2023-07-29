@@ -7,7 +7,7 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
-class ManagerSeeder extends Seeder
+class StaffSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -16,11 +16,11 @@ class ManagerSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('managers')->insert([
+        DB::table('staff')->insert([
             'code' => 's'. (string) str_pad(random_int(0, 999999), 6,0, STR_PAD_LEFT),
-            'name' => 'sample manager',
-            'email' => 'sample.manager@gmail.com',
-            'password' => Hash::make('sample.manager'),
+            'name' => 'sample staff',
+            'email' => 'sample.staff@gmail.com',
+            'password' => Hash::make('sample.staff'),
             'created_at' => now(),
             'updated_at' => now(),
         ]);

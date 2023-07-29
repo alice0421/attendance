@@ -81,7 +81,7 @@ DDD (ドメイン駆動設計) とは、エリック・エバンズが提唱し�
 
 ## ディレクトリ構造
 ```bash
-src/app/Domains # 以下DDD設計指針に準拠
+src/app/Domains
 ├── Auth # 業務 (ドメイン) の名前
 │   ├── Domain # ドメインを記述する場所 (技術者以外にも分かるように)
 │   │   ├── Entities # Repositoryで扱う型
@@ -90,7 +90,7 @@ src/app/Domains # 以下DDD設計指針に準拠
 │   │   └── ValueObjects # Entityの属性となる値
 │   ├── Infrastructure # ドメインを技術的に実装する場所 (技術者向け)
 │   │   └── Repositories # Repositoryの実装クラス
-│   └── UseCase # UseCaseの実装クラス
+│   └── UseCase # UseCaseの実装クラス (1ユースケース1メソッド)
 │       └── DTOs # UseCaseで扱う型
 ...以下略...
 ```

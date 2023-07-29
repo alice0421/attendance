@@ -22,11 +22,13 @@ class AuthRepository implements AuthRepositoryInterface
     public function mentorRegister(MentorRegisterInputEntity $mentorRegisterInputEntity): MentorRegisterOutputEntity
     {
         // codeを一意に定める
-        while(true){
+        while(true) {
             $code = 'm'. (string) str_pad((string) random_int(0, 999999), 6, "0", STR_PAD_LEFT);
-            if(!Mentor::where('code', $code)->exists()) break;
+            if(!Mentor::where('code', $code)->exists()) {
+                break;
+            }
         }
-        
+
         $mentor = Mentor::create([
             'code' => $code,
             'name' => $mentorRegisterInputEntity->getName()->value(),

@@ -53,15 +53,14 @@ class MentorRegisterController extends Controller
         }
 
         // 実際の処理
-        try{
+        try {
             $mentorRegisterInput = new MentorRegisterInput(
                 $request->email,
                 $request->name,
                 $request->password
             );
             $mentorRegisterOutput = $this->mentorRegisterUseCase->execute($mentorRegisterInput);
-        }
-        catch (Throwable $error) { // それ以外の全ての例外
+        } catch (Throwable $error) { // それ以外の全ての例外
             return response()->json([
                 'errors' => [
                     'code' => Response::HTTP_INTERNAL_SERVER_ERROR,

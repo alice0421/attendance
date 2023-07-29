@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Providers;
 
 use App\Domains\Auth\Domain\Repositories\AuthRepository as AuthRepositoryInterface;

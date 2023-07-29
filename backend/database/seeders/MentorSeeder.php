@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -18,7 +20,7 @@ class MentorSeeder extends Seeder
     {
         // メンター
         DB::table('mentors')->insert([
-            'code' => 'm'. (string) str_pad(random_int(0, 999999), 6,0, STR_PAD_LEFT),
+            'code' => 'm'. (string) str_pad((string) random_int(0, 999999), 6, "0", STR_PAD_LEFT),
             'name' => 'remote mentor',
             'is_admin' => false,
             'is_remote' => true,
@@ -31,7 +33,7 @@ class MentorSeeder extends Seeder
         ]);
 
         DB::table('mentors')->insert([
-            'code' => 'm'. (string) str_pad(random_int(0, 999999), 6,0, STR_PAD_LEFT),
+            'code' => 'm'. (string) str_pad((string) random_int(0, 999999), 6, "0", STR_PAD_LEFT),
             'name' => 'office mentor',
             'is_admin' => false,
             'is_remote' => false,
@@ -44,7 +46,7 @@ class MentorSeeder extends Seeder
         ]);
 
         DB::table('mentors')->insert([
-            'code' => 'm'. (string) str_pad(random_int(0, 999999), 6,0, STR_PAD_LEFT),
+            'code' => 'm'. (string) str_pad((string) random_int(0, 999999), 6, "0", STR_PAD_LEFT),
             'name' => 'admin mentor',
             'is_admin' => true,
             'is_remote' => false,

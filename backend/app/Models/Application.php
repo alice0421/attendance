@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -16,12 +18,12 @@ class Application extends Model
         'time',
         'comment',
         'is_accepted',
-        'manager_id',
+        'staff_id',
     ];
 
-    public function manager()
+    public function staff()
     {
-        return $this->belongsTo(Manager::class);
+        return $this->belongsTo(Staff::class);
     }
 
     public function record()

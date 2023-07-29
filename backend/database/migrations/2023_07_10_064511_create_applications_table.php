@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -21,7 +23,7 @@ return new class extends Migration
             $table->time('time');
             $table->text('comment');
             $table->integer('is_accepted'); // enum: 0 = 差戻し, 1 = 承認, 2 = 申請中
-            $table->foreignId('manager_id')->constrained('managers'); // 申請を確認した運営
+            $table->foreignId('staff_id')->constrained('staff'); // 申請を確認した運営
             $table->timestamps();
             $table->softDeletes();
         });

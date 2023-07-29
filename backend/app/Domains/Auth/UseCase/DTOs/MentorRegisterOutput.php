@@ -46,7 +46,7 @@ class MentorRegisterOutput
     }
 
     /**
-     * @param Mentor $mentor
+     * @param MentorRegisterOutputEntity $entity
      * @return self
      */
     public static function createFromEntity(MentorRegisterOutputEntity $entity): self

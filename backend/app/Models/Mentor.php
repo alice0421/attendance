@@ -6,10 +6,11 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
-
 class Mentor extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
@@ -49,17 +50,26 @@ class Mentor extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function events()
+    /**
+     * @return BelongsToMany<Event>
+     */
+    public function events(): BelongsToMany
     {
         return $this->belongsToMany(Event::class);
     }
 
-    public function records()
+    /**
+     * @return HasMany<Record>
+     */
+    public function records(): HasMany
     {
         return $this->hasMany(Record::class);
     }
 
-    public function shifts()
+    /**
+     * @return HasMany<Shift>
+     */
+    public function shifts(): HasMany
     {
         return $this->hasMany(Shift::class);
     }

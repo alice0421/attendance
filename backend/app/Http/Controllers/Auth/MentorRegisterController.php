@@ -19,10 +19,10 @@ class MentorRegisterController extends Controller
     /**
      * @var MentorRegisterUseCase
      */
-    private MentorRegisterUseCase $mentorRegisterUsecase;
+    private MentorRegisterUseCase $mentorRegisterUseCase;
 
     /**
-     * @param MentorRegisterUseCase $mentorRegisterUsecase
+     * @param MentorRegisterUseCase $mentorRegisterUseCase
      */
     public function __construct(MentorRegisterUseCase $mentorRegisterUseCase)
     {
@@ -40,7 +40,7 @@ class MentorRegisterController extends Controller
             'name' => ['required', 'string'],
             // emailは *.mentor@gmail.com のみ許可、mentorsテーブル内で重複を許さない
             'email' => ['required', 'string', 'email:filter,dns,spoof,strict', 'unique:mentors,email', 'regex:/.*'. config('consts.emails.EMAIL.MENTOR'). '/'],
-            'password' => ['required', Password::defaults()],
+            'password' => ['required', 'string', Password::defaults()],
         ]);
         if ($validator->fails()) {
             return response()->json([

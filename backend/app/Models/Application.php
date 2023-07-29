@@ -6,11 +6,15 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Application extends Model
 {
     use HasFactory;
 
+    /**
+     * @var array<int, string>
+     */
     protected $fillable = [
         'record_id',
         'record_type',
@@ -21,12 +25,18 @@ class Application extends Model
         'staff_id',
     ];
 
-    public function staff()
+    /**
+     * @return BelongsTo<Staff, Application>
+     */
+    public function staff(): BelongsTo
     {
         return $this->belongsTo(Staff::class);
     }
 
-    public function record()
+    /**
+     * @return BelongsTo<Record, Application>
+     */
+    public function record(): BelongsTo
     {
         return $this->belongsTo(Record::class);
     }

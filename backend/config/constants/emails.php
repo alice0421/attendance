@@ -4,6 +4,6 @@
 return [
     'EMAIL' => [
         'MENTOR' => '\.mentor@gmail.com',
-        'MANAGER' => '\.manager@gmail.com',
+        'STAFF' => '\.staff@gmail.com',
     ],
 ];

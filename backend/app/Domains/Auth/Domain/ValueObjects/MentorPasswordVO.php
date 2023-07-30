@@ -40,10 +40,10 @@ class MentorPasswordVO
     }
 
     /**
-     * @param MentorPasswordVO $other
+     * @param self $other
      * @return bool
      */
-    public function equals(MentorPasswordVO $other): bool
+    public function equals(self $other): bool
     {
         return $this->_value === $other->value();
     }

@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use App\Http\Controllers\Auth\MentorRegisterController;
+use App\Http\Controllers\Auth\StaffRegisterController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -29,3 +30,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 // 認証制限なし
 Route::post('/mentors/register', MentorRegisterController::class)->name('mentor.register');
+Route::post('/staff/register', StaffRegisterController::class)->name('staff.register');

@@ -7,7 +7,7 @@ namespace App\Domains\Auth\Domain\ValueObjects;
 /**
  * メンターのid
  */
-class MentorIdVO
+class StaffIdVO
 {
     /**
      * @var int

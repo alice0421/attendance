@@ -5,36 +5,36 @@ declare(strict_types=1);
 namespace App\Domains\Auth\Domain\ValueObjects;
 
 /**
- * メンターのid
+ * メンターのemail
  */
-class MentorIdVO
+class StaffEmailVO
 {
     /**
-     * @var int
+     * @var string
      */
-    private int $_value;
+    private string $_value;
 
     /**
-     * @param int $id
+     * @param string $email
      */
-    private function __construct(int $id)
+    private function __construct(string $email)
     {
-        $this->_value = $id;
+        $this->_value = $email;
     }
 
     /**
-     * @param int $id
+     * @param string $email
      * @return self
      */
-    public static function create(int $id): self
+    public static function create(string $email): self
     {
-        return new self($id);
+        return new self($email);
     }
 
     /**
-     * @return int
+     * @return string
      */
-    public function value(): int
+    public function value(): string
     {
         return $this->_value;
     }

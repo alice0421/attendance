@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers\Auth;
 
-use App\Domains\Auth\UseCase\DTOs\MentorRegisterInput;
-use App\Domains\Auth\UseCase\MentorRegisterUseCase;
+use App\Domains\Auth\UseCase\DTOs\StaffRegisterInput;
+use App\Domains\Auth\UseCase\StaffRegisterUseCase;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -14,19 +14,19 @@ use Illuminate\Validation\Rules\Password;
 use Symfony\Component\HttpFoundation\Response;
 use Throwable;
 
-class MentorRegisterController extends Controller
+class StaffRegisterController extends Controller
 {
     /**
-     * @var MentorRegisterUseCase
+     * @var StaffRegisterUseCase
      */
-    private MentorRegisterUseCase $mentorRegisterUseCase;
+    private StaffRegisterUseCase $staffRegisterUseCase;
 
     /**
-     * @param MentorRegisterUseCase $mentorRegisterUseCase
+     * @param StaffRegisterUseCase $staffRegisterUseCase
      */
-    public function __construct(MentorRegisterUseCase $mentorRegisterUseCase)
+    public function __construct(StaffRegisterUseCase $staffRegisterUseCase)
     {
-        $this->mentorRegisterUseCase = $mentorRegisterUseCase;
+        $this->staffRegisterUseCase = $staffRegisterUseCase;
     }
 
     /**
@@ -38,8 +38,8 @@ class MentorRegisterController extends Controller
         // Requestのバリデーション
         $validator = Validator::make($request->all(), [
             'name' => ['required', 'string'],
-            // emailは *.mentor@gmail.com のみ許可、mentorsテーブル内で重複を許さない
-            'email' => ['required', 'string', 'email:filter,dns,spoof,strict', 'unique:mentors,email', 'regex:/.*'. config('constants.emails.EMAIL.MENTOR'). '/'],
+            // emailは *.staff@gmail.com のみ許可、staffテーブル内で重複を許さない
+            'email' => ['required', 'string', 'email:filter,dns,spoof,strict', 'unique:staff,email', 'regex:/.*'. config('constants.emails.EMAIL.STAFF'). '/'],
             'password' => ['required', 'string', Password::defaults()],
         ]);
         if ($validator->fails()) {
@@ -54,12 +54,12 @@ class MentorRegisterController extends Controller
 
         // 実際の処理
         try {
-            $mentorRegisterInput = new MentorRegisterInput(
+            $staffRegisterInput = new StaffRegisterInput(
                 $request->email,
                 $request->name,
                 $request->password
             );
-            $mentorRegisterOutput = $this->mentorRegisterUseCase->execute($mentorRegisterInput);
+            $staffRegisterOutput = $this->staffRegisterUseCase->execute($staffRegisterInput);
         } catch (Throwable $error) { // それ以外の全ての例外
             return response()->json([
                 'errors' => [
@@ -73,12 +73,12 @@ class MentorRegisterController extends Controller
         // Response
         return response()->json([
             'data' => [
-                'type' => 'mentors',
-                'id' => $mentorRegisterOutput->getId(),
+                'type' => 'staff',
+                'id' => $staffRegisterOutput->getId(),
                 'attributes' => [
-                    'code' => $mentorRegisterOutput->getCode(),
-                    'email' => $mentorRegisterOutput->getEmail(),
-                    'name' => $mentorRegisterOutput->getName()
+                    'code' => $staffRegisterOutput->getCode(),
+                    'email' => $staffRegisterOutput->getEmail(),
+                    'name' => $staffRegisterOutput->getName()
                 ]
             ]
         ], Response::HTTP_CREATED);

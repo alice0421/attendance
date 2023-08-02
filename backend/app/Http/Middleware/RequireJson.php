@@ -20,7 +20,7 @@ class RequireJson
      */
     public function handle(Request $request, Closure $next): Response|RedirectResponse|JsonResponse
     {
-        // クライアントでAccept：application/jsonを指定していないものは拒絶する
+        // クライアントでHTTPヘッダーにAccept：application/jsonを指定していないものは拒絶する
         if (! $request->expectsJson()) {
             abort(response()->json([
                 'errors' => [

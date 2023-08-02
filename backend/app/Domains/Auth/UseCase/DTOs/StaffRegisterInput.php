@@ -71,9 +71,9 @@ class StaffRegisterInput
     public function toEntity(): StaffRegisterInputEntity
     {
         return new StaffRegisterInputEntity(
-            StaffEmailVO::create($this->email),
-            StaffNameVO::create($this->name),
-            StaffPasswordVO::create($this->password)
+            StaffEmailVO::create($this->getEmail()),
+            StaffNameVO::create($this->getName()),
+            StaffPasswordVO::create($this->getPassword()),
         );
     }
 }

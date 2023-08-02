@@ -7,7 +7,7 @@ namespace App\Domains\Auth\UseCase\DTOs;
 use App\Domains\Auth\Domain\Entities\MentorRegisterOutputEntity;
 
 /**
- * メンター登録の入力
+ * メンター登録の出力
  */
 class MentorRegisterOutput
 {
@@ -55,7 +55,7 @@ class MentorRegisterOutput
             $entity->getCode()->value(),
             $entity->getEmail()->value(),
             $entity->getId()->value(),
-            $entity->getName()->value()
+            $entity->getName()->value(),
         );
     }
 

@@ -71,9 +71,9 @@ class MentorRegisterInput
     public function toEntity(): MentorRegisterInputEntity
     {
         return new MentorRegisterInputEntity(
-            MentorEmailVO::create($this->email),
-            MentorNameVO::create($this->name),
-            MentorPasswordVO::create($this->password)
+            MentorEmailVO::create($this->getEmail()),
+            MentorNameVO::create($this->getName()),
+            MentorPasswordVO::create($this->getPassword()),
         );
     }
 }

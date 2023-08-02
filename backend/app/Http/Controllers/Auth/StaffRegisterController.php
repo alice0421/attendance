@@ -47,8 +47,8 @@ class StaffRegisterController extends Controller
                 'errors' => [
                     'code' => Response::HTTP_UNPROCESSABLE_ENTITY,
                     'message' => '422 Unprocessable Entity',
-                    'details' => $validator->messages()
-                ]
+                    'details' => $validator->messages(),
+                ],
             ], Response::HTTP_UNPROCESSABLE_ENTITY);
         }
 
@@ -65,8 +65,8 @@ class StaffRegisterController extends Controller
                 'errors' => [
                     'code' => Response::HTTP_INTERNAL_SERVER_ERROR,
                     'message' => '500 Internal Server Error',
-                    'details' => $error->getMessage()
-                ]
+                    'details' => $error->getMessage(),
+                ],
             ], Response::HTTP_INTERNAL_SERVER_ERROR);
         }
 
@@ -78,9 +78,9 @@ class StaffRegisterController extends Controller
                 'attributes' => [
                     'code' => $staffRegisterOutput->getCode(),
                     'email' => $staffRegisterOutput->getEmail(),
-                    'name' => $staffRegisterOutput->getName()
-                ]
-            ]
+                    'name' => $staffRegisterOutput->getName(),
+                ],
+            ],
         ], Response::HTTP_CREATED);
     }
 }

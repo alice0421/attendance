@@ -59,7 +59,7 @@ class MentorRegisterOutputEntity
             MentorCodeVO::create($model->code),
             MentorEmailVO::create($model->email),
             MentorIdVO::create($model->id),
-            MentorNameVO::create($model->name)
+            MentorNameVO::create($model->name),
         );
     }
 

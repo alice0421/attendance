@@ -59,7 +59,7 @@ class StaffRegisterOutputEntity
             StaffCodeVO::create($model->code),
             StaffEmailVO::create($model->email),
             StaffIdVO::create($model->id),
-            StaffNameVO::create($model->name)
+            StaffNameVO::create($model->name),
         );
     }
 

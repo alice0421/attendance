@@ -47,8 +47,8 @@ class MentorRegisterController extends Controller
                 'errors' => [
                     'code' => Response::HTTP_UNPROCESSABLE_ENTITY,
                     'message' => '422 Unprocessable Entity',
-                    'details' => $validator->messages()
-                ]
+                    'details' => $validator->messages(),
+                ],
             ], Response::HTTP_UNPROCESSABLE_ENTITY);
         }
 
@@ -65,8 +65,8 @@ class MentorRegisterController extends Controller
                 'errors' => [
                     'code' => Response::HTTP_INTERNAL_SERVER_ERROR,
                     'message' => '500 Internal Server Error',
-                    'details' => $error->getMessage()
-                ]
+                    'details' => $error->getMessage(),
+                ],
             ], Response::HTTP_INTERNAL_SERVER_ERROR);
         }
 
@@ -78,9 +78,9 @@ class MentorRegisterController extends Controller
                 'attributes' => [
                     'code' => $mentorRegisterOutput->getCode(),
                     'email' => $mentorRegisterOutput->getEmail(),
-                    'name' => $mentorRegisterOutput->getName()
-                ]
-            ]
+                    'name' => $mentorRegisterOutput->getName(),
+                ],
+            ],
         ], Response::HTTP_CREATED);
     }
 }

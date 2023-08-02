@@ -4,15 +4,14 @@ declare(strict_types=1);
 
 namespace App\Domains\Auth\UseCase\DTOs;
 
-use App\Domains\Auth\Domain\Entities\MentorRegisterInputEntity;
+use App\Domains\Auth\Domain\Entities\MentorLoginInputEntity;
 use App\Domains\Auth\Domain\ValueObjects\MentorEmailVO;
-use App\Domains\Auth\Domain\ValueObjects\MentorNameVO;
 use App\Domains\Auth\Domain\ValueObjects\MentorPasswordVO;
 
 /**
- * メンター登録の入力
+ * メンターログインの入力
  */
-class MentorRegisterInput
+class MentorLoginInput
 {
     /**
      * @var string
@@ -22,22 +21,15 @@ class MentorRegisterInput
     /**
      * @var string
      */
-    private string $name;
-
-    /**
-     * @var string
-     */
     private string $password;
 
     /**
      * @param string $email
-     * @param string $name
      * @param string $password
      */
-    public function __construct(string $email, string $name, string $password)
+    public function __construct(string $email, string $password)
     {
         $this->email = $email;
-        $this->name = $name;
         $this->password = $password;
     }
 
@@ -52,27 +44,18 @@ class MentorRegisterInput
     /**
      * @return string
      */
-    public function getName(): string
-    {
-        return $this->name;
-    }
-
-    /**
-     * @return string
-     */
     public function getPassword(): string
     {
         return $this->password;
     }
 
     /**
-     * @return MentorRegisterInputEntity
+     * @return MentorLoginInputEntity
      */
-    public function toEntity(): MentorRegisterInputEntity
+    public function toEntity(): MentorLoginInputEntity
     {
-        return new MentorRegisterInputEntity(
+        return new MentorLoginInputEntity(
             MentorEmailVO::create($this->getEmail()),
-            MentorNameVO::create($this->getName()),
             MentorPasswordVO::create($this->getPassword()),
         );
     }

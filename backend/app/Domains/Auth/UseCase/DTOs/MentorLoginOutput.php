@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace App\Domains\Auth\UseCase\DTOs;
 
-use App\Domains\Auth\Domain\Entities\StaffRegisterOutputEntity;
+use App\Domains\Auth\Domain\Entities\MentorLoginOutputEntity;
 
 /**
- * メンター登録の出力
+ * メンターログインの出力
  */
-class StaffRegisterOutput
+class MentorLoginOutput
 {
     /**
      * @var string
@@ -46,10 +46,10 @@ class StaffRegisterOutput
     }
 
     /**
-     * @param StaffRegisterOutputEntity $entity
+     * @param MentorLoginOutputEntity $entity
      * @return self
      */
-    public static function createFromEntity(StaffRegisterOutputEntity $entity): self
+    public static function createFromEntity(MentorLoginOutputEntity $entity): self
     {
         return new self(
             $entity->getCode()->value(),

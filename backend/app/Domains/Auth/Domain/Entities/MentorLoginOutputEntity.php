@@ -11,9 +11,9 @@ use App\Domains\Auth\Domain\ValueObjects\MentorNameVO;
 use App\Models\Mentor;
 
 /**
- * メンター登録の出力Entity
+ * メンターログインの出力Entity
  */
-class MentorRegisterOutputEntity
+class MentorLoginOutputEntity
 {
     /**
      * @var MentorCodeVO

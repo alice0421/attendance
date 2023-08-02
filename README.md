@@ -226,7 +226,13 @@ src/app/Http/Controllers # 1アクション1コントローラー
 
 # 開発Tips
 ## back
-- PostmanでのAPI挙動テスト時、`app/Http/Kernel.php`の`'throttle:api'`はコメントアウトすること。
-  - 外さないと、同ドメインからの1分あたりのリクエスト回数が制限される。
+- PostmanでのAPI挙動テスト
+  - `app/Http/Kernel.php`の`'throttle:api'`をコメントアウト (リリースブランチにpushはしないように) 。
+    - 外さないと、同ドメインからの1分あたりのリクエスト回数が制限される。
+  - .envを以下に変更する。
+    ```php
+    SANCTUM_STATEFUL_DOMAINS=localhost:80 # localhost:3000ではない！
+    SESSION_DOMAIN=localhost
+    ```
 
 ## front

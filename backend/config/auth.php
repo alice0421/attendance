@@ -14,7 +14,7 @@ return [
     */
 
     'defaults' => [
-        'guard' => 'web',
+        'guard' => 'mentor',
         'passwords' => 'mentors',
     ],
 
@@ -36,7 +36,7 @@ return [
     */
 
     'guards' => [
-        'web' => [
+        'mentor' => [
             'driver' => 'session',
             'provider' => 'mentors',
         ],
